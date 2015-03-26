@@ -22,6 +22,26 @@ public class LinkedList {
 		return buffer;
 	}
 	
+	/**
+	 * 
+	 * @param index
+	 * @return element at given index, if not available --> return == null
+	 */
+	public ListElement getListElement(int index) {
+		int count = 0;
+		ListElement current = head;
+		while(current.next != null ) {
+			if(head == null) {
+				return null;
+			}
+			while(count!= index) {
+				count++;
+				current = current.next;
+			}
+			return current;
+		}
+	}
+	
 	public void addStart(ListElement newElement) {
 		if (head == null) {
 			head = newElement;
@@ -134,7 +154,7 @@ public class LinkedList {
         			return;
         		}	
         		
-        		if(current.value.equals(afterThis.value)) {
+        		if(current == afterThis) {
         			if(current.next.next == null) {
         				current.next = null;
         				return;
