@@ -30,16 +30,19 @@ public class LinkedList {
 	public ListElement getListElement(int index) {
 		int count = 0;
 		ListElement current = head;
-		while(current.next != null ) {
-			if(head == null) {
-				return null;
-			}
-			while(count!= index) {
+		if(head == null) {
+			return null;
+		}
+		while(current.next != null) {
+			while(count != index) {
 				count++;
 				current = current.next;
 			}
-			return current;
 		}
+		if(count != index) {
+			return null;
+		}
+		return current;
 	}
 	
 	public void addStart(ListElement newElement) {
@@ -136,6 +139,7 @@ public class LinkedList {
         		System.out.println("afterThis is no element in LinkedList");
         		return;
         	}
+        	
         	for(ListElement current = head; current.next != null; current = current.next) {
         		if(current == afterThis) {
         			ListElement help = current.next;
