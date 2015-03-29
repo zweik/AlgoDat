@@ -1,6 +1,6 @@
 public class LinkedList {
 	private ListElement head = null;
-        //count f√ºr die L√§nge w√§re sinnvoll
+        //count f¸r die L‰nge w‰re sinnvoll
 	
 	public ListElement create(String value) {
 		return new ListElement(value, null);
@@ -9,9 +9,7 @@ public class LinkedList {
 	public String toString(){
 		String buffer = "";
 		int count = 0; 
-                //das Count Element brauchst du nicht
-                //du k√∂nntest das Komma einfach so anh√§ngen und am ende
-                //vor dem return das letzte komma entfernen
+		
 		for (ListElement current = head; current != null; current = current.next) {
 			if (count != 0) {
 				buffer += ",";
@@ -30,17 +28,19 @@ public class LinkedList {
 	public ListElement getListElement(int index) {
 		int count = 0;
 		ListElement current = head;
+		
 		if(head == null) {
 			return null;
 		}
+		
 		while(current.next != null) {
 			while(count != index) {
 				count++;
 				current = current.next;
 			}
-		}
-		if(count != index) {
-			return null;
+			if(count == index) {
+				break;
+			}
 		}
 		return current;
 	}
@@ -130,21 +130,21 @@ public class LinkedList {
 		System.out.println("No element in List");
 	}
 
-        // Diese beiden Funktionen w√§ren ebenfalls interessant ...
+        // Diese beiden Funktionen w‰ren ebenfalls interessant ...
         // Willst du es versuchen?
 
         public void insertAfter(ListElement afterThis, ListElement addThis) {
-            // Code
         	if(head == null) {
         		System.out.println("afterThis is no element in LinkedList");
         		return;
         	}
         	
         	for(ListElement current = head; current.next != null; current = current.next) {
-        		if(current == afterThis) {
+        		if(afterThis == current) {
         			ListElement help = current.next;
         			current.next = addThis;
         			addThis.next = help;
+        			System.out.println("insertAfter successfully completed");
         		}
         	}
         }
